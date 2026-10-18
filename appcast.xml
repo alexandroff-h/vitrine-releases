@@ -1,9 +1,22 @@
-<?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle">
-  <channel>
-    <title>Vitrine Updates</title>
-    <link>https://joinvitrine.com</link>
-    <description>Updates for Vitrine on macOS.</description>
-    <language>en</language>
-  </channel>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Vitrine Updates</title>
+        <link>https://joinvitrine.com</link>
+        <description>Updates for Vitrine on macOS.</description>
+        <language>en</language>
+        <item>
+            <title>0.1.3</title>
+            <pubDate>Sun, 18 Oct 2026 08:22:24 +0300</pubDate>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.1.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Check for Updates is now available in the Vitrine menu. Install this first Sparkle-enabled beta with the curl installer; subsequent versions can update in the app.
+
+Apple Silicon and macOS 15 or newer. This beta is signed but not notarized.
+]]></description>
+            <enclosure url="https://github.com/alexandroff-h/vitrine-releases/releases/download/v0.1.3/Vitrine.zip" length="22569298" type="application/octet-stream" sparkle:edSignature="VPmsBD9Ticx6V0qkhzdpPU05jnzvnaoeScPBBQ3B+C69R3DbOpVuFQEgYxCXUHm+In9Qltz9V3RjZgimaXdMBQ=="/>
+        </item>
+    </channel>
 </rss>
