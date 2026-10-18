@@ -7,13 +7,19 @@ fail() { printf '%s\n' "$*" >&2; exit 1; }
 [[ "$(uname -s)" == Darwin && "$(uname -m)" == arm64 ]] || fail 'Vitrine requires an Apple Silicon Mac.'
 major="$(sw_vers -productVersion | cut -d. -f1)"
 (( major >= 15 )) || fail 'Vitrine requires macOS 15 or newer.'
-pgrep -f '/Vitrine[.]app/Contents/MacOS/CanvasMac' >/dev/null && fail 'Quit Vitrine, then run this installer again.'
 parent="${VITRINE_INSTALL_DIR:-/Applications}"
 if [[ ! -w "$parent" && -z "${VITRINE_INSTALL_DIR:-}" ]]; then parent="$HOME/Applications"; fi
 mkdir -p "$parent"
 [[ -w "$parent" ]] || fail "Cannot write to $parent"
-work="$(mktemp -d "$parent/.vitrine-install.XXXXXX")"
 destination="$parent/Vitrine.app"
+is_running() {
+  ps -axo command= | awk -v executable="$destination/Contents/MacOS/CanvasMac" '
+    { sub(/^[ \t]+/, "") }
+    $0 == executable || index($0, executable " ") == 1 { found=1 }
+    END { exit !found }'
+}
+is_running && fail 'Quit Vitrine, then run this installer again.'
+work="$(mktemp -d "$parent/.vitrine-install.XXXXXX")"
 cleanup() {
   if [[ -d "$work/previous.app" && ! -e "$destination" ]]; then
     mv "$work/previous.app" "$destination"
@@ -43,9 +49,9 @@ app="$work/unpacked/Vitrine.app"
 codesign --verify --deep --strict "$app"
 # This beta is not notarized. Remove quarantine from this app only; leave Gatekeeper enabled.
 xattr -dr com.apple.quarantine "$app" 2>/dev/null || true
-pgrep -f '/Vitrine[.]app/Contents/MacOS/CanvasMac' >/dev/null && fail 'Vitrine was opened during download. Quit it and retry.'
+is_running && fail 'Vitrine was opened during download. Quit it and retry.'
 if [[ -e "$destination" ]]; then mv "$destination" "$work/previous.app"; fi
 mv "$app" "$destination"
 touch "$destination"
 printf 'Installed Vitrine %s in %s. Your library is unchanged.\n' "${tag#v}" "$parent"
-open "$destination"
+if [[ "${VITRINE_INSTALL_NO_OPEN:-0}" != 1 ]]; then open "$destination"; fi
