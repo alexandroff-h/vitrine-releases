@@ -6,6 +6,29 @@
         <description>Updates for Vitrine on macOS.</description>
         <language>en</language>
         <item>
+            <title>0.2.0</title>
+            <pubDate>Fri, 23 Oct 2026 15:09:15 +0300</pubDate>
+            <sparkle:version>2000</sparkle:version>
+            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Welcome to the closed beta. This is the first build for everyone joining from the waitlist, and it opens with a short letter from me: after onboarding on a fresh install, or on the first launch after this update. Help → What’s New in Vitrine brings it back any time.
+
+Keep what catches your eye. Point at a picture anywhere and double‑press the right ⌘ to send it to Vitrine.
+
+One reference, every board. Your Library keeps each reference once, and any board can use it.
+
+Bring your AI to the canvas. Help → Connect Your AI lets the assistant you already use sort and arrange your boards.
+
+Grain has more tooth. The Grain canvas texture is now clearly visible at the top of Texture amount, while low settings look as they did. The onboarding glow also fades out softly instead of ending at a hard edge.
+
+Tell me what breaks: reply to your invitation with what you tried, what you expected and what happened.
+
+Apple Silicon and macOS 15 or newer. This beta is signed but not notarized.
+]]></description>
+            <enclosure url="https://github.com/alexandroff-h/vitrine-releases/releases/download/v0.2.0/Vitrine.zip" length="24821405" type="application/octet-stream" sparkle:edSignature="ufTZGPiR6geWr90wbOACQpe+9y8y7JAug6sNSJ3mzETJbhZzgp3MmNH2xh72vMENRSEW2gMnI+EhkVInoeDPBw=="/>
+        </item>
+        <item>
             <title>0.1.5</title>
             <pubDate>Fri, 23 Oct 2026 01:41:57 +0300</pubDate>
             <sparkle:version>1005</sparkle:version>
